@@ -16,7 +16,9 @@ const dummy = (blogs) => {
   return 1;
 };
 const totallikes = (like) => {
-  return like.reduce((previous, currVal) => previous + currVal.likes, 0);
+  console.log("hi", like);
+
+  return like.reduce((a, b) => a + b.likes, 0);
 };
 
 module.exports = {
