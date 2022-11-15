@@ -3,6 +3,9 @@ const reverse = (string) => {
 };
 
 const average = (array) => {
+  if (array.length === 0) {
+    return 0;
+  }
   const reducer = (sum, item) => {
     return sum + item;
   };
@@ -12,9 +15,13 @@ const average = (array) => {
 const dummy = (blogs) => {
   return 1;
 };
+const totallikes = (like) => {
+  return like.reduce((previous, currVal) => previous + currVal.likes, 0);
+};
 
 module.exports = {
   reverse,
   average,
   dummy,
+  totallikes,
 };
