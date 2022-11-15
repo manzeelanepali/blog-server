@@ -9,8 +9,12 @@ const average = (array) => {
 
   return array.reduce(reducer, 0) / array.length;
 };
+const dummy = (blogs) => {
+  return 1;
+};
 
 module.exports = {
   reverse,
   average,
+  dummy,
 };
