@@ -46,6 +46,12 @@ test("all notes are returned", async () => {
 //   const contents = response.body.map((r) => r.content);
 //   expect(contents).toContain("Browser can execute only Javascript");
 // });
+test("a specific blog is within the returned blog", async () => {
+  const response = await api.get("/api/blogs");
+
+  const blogTitle = response.body.map((r) => r.title);
+  expect(blogTitle).toContain("Practice");
+});
 
 afterAll(() => {
   mongoose.connection.close();
