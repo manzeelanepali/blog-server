@@ -11,7 +11,7 @@ test("blogs are returned as json", async () => {
     //.expect("Content-Type", "application/json; charset=utf-8");
     .expect("Content-Type", /application\/json/); // this is regular expression
   // this is regular expression
-});
+}, 10000);
 
 afterAll(() => {
   mongoose.connection.close();
