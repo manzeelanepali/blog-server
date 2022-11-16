@@ -52,12 +52,20 @@ test("a specific blog is within the returned blog", async () => {
   const blogTitle = response.body.map((r) => r.title);
   expect(blogTitle).toContain("Practice");
 });
-test.only("verifying blog post by unique id by database _id", async () => {
+test("verifying blog post by unique id by database _id", async () => {
   //for verifying _id in id key
   const response = await api.get("/api/blogs");
   console.log("iam response", response.body[0].id);
   expect(response.body[0].id).toBeDefined();
 });
+test("throwing an error ,if title and url property missing", async () => {
+  const newBlog = {
+    author: "kanchi",
+    likes: 403,
+  };
+  await api.post("/api/blogs").send(newBlog).expect(400);
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });

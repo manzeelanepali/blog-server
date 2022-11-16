@@ -12,6 +12,9 @@ blogRouter.post("/", async (request, response) => {
   if (!body.likes) {
     body.likes = 0;
   }
+  if (!body.title || body.url) {
+    response.status(400).json({ error: "missing property" }).end();
+  }
   const blog = new Blog({
     title: body.title,
     author: body.author,
