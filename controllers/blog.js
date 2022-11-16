@@ -9,26 +9,29 @@ blogRouter.get("/", async (request, response) => {
 blogRouter.post("/", async (request, response) => {
   const body = request.body;
 
-  const blog = new Blog({
-    url: body.url,
-    likes: body.likes,
-  });
-  try {
-    const newBlog = await blog.save();
-    response.status(201).json(newBlog);
-  } catch (error) {
-    next(error);
+  if (!body.likes) {
+    body.likes = 0;
   }
-  blog
-    .save()
-    .then((savedNote) => {
-      response.json(savedNote);
-    })
-    .catch((error) => next(error));
+  const blog = new Blog({
+    title: body.title,
+    author: body.author,
 
-  // blog.save().then((result) => {
-  //   response.status(201).json(result);
-  // });
+    //   const newBlog = await blog.save();
+    //   response.status(201).json(newBlog);
+    // } catch (error) {
+    //   next(error);
+    // }
+    // blog
+    //   .save()
+    //   .then((savedNote) => {
+    //     response.json(savedNote);
+    //   })
+    //   .catch((error) => next(error));
+
+    // blog.save().then((result) => {
+    //   response.status(201).json(result);
+    // });
+  });
 });
 
 module.exports = blogRouter;
