@@ -6,9 +6,15 @@ const Blog = require("../models/blogs");
 const api = supertest(app);
 const initialBlogs = [
   {
-    title: "Hello",
-    author: "Rita",
-    likes: 12,
+    title: "Practice",
+    author: "Niru Kumari",
+    url: "this and this",
+  },
+  {
+    title: "Arna Buffalo",
+    author: "Niru Magar",
+    url: "this and that",
+    likes: 18,
   },
 ];
 
@@ -18,7 +24,7 @@ beforeEach(async () => {
   await noteObject.save();
   noteObject = new Blog(initialBlogs[1]);
   await noteObject.save();
-});
+}, 10000);
 
 test("blogs are returned as json", async () => {
   await api
@@ -27,6 +33,19 @@ test("blogs are returned as json", async () => {
     //.expect("Content-Type", "application/json; charset=utf-8");
     .expect("Content-Type", /application\/json/); // this is regular expression
 }, 10000);
+
+test("all notes are returned", async () => {
+  const response = await api.get("/api/blogs");
+
+  expect(response.body).toHaveLength(initialBlogs.length);
+});
+
+// test("a specific note is within the returned notes", async () => {
+//   const response = await api.get("/api/blogs");
+
+//   const contents = response.body.map((r) => r.content);
+//   expect(contents).toContain("Browser can execute only Javascript");
+// });
 
 afterAll(() => {
   mongoose.connection.close();
