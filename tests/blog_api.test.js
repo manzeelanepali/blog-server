@@ -81,6 +81,13 @@ test("deleting single blog post", async () => {
   expect(blogTitle).not.toContain("practice");
 });
 
+test("updating the likes in the blog", async () => {
+  const updateBlog = await Blog.find({ title: "Practice" });
+  const updatedLike = {
+    likes: 100,
+  };
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });
