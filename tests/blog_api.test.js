@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const supertest = require("supertest");
 const app = require("../app");
+
 const Blog = require("../models/blogs");
 
 const api = supertest(app);
@@ -66,12 +67,19 @@ test("throwing an error ,if title and url property missing", async () => {
   await api.post("/api/blogs").send(newBlog).expect(400);
 });
 
-// test(" delete specific blog acc to id", async () => {
-//   const blog = await Blog.find({ title: "Atomic habbits" });
-//   console.log("hi this is blog", blog);
-
-//   await api.delete(`/api/blogs/${blog[0].id}`).expect(204);
-//   console.log("to see whats in blog", blog[0].id);
+test("deleting single blog post", async () => {
+  const deleteBlog = await Blog.find({
+    title: "Practice",
+  });
+  console.log("what's comes in deleteblog", deleteBlog);
+  await api.delete(`/api/blogs/${deleteBlog[0]._id}`).expect(204);
+  const remainedBlog = await Blog.find({});
+  console.log("iam reemainedblog", remainedBlog);
+  const blogTitle = remainedBlog.map((r) => {
+    return r.title;
+  });
+  expect(blogTitle).not.toContain("practice");
+});
 
 afterAll(() => {
   mongoose.connection.close();
