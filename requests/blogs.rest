@@ -5,7 +5,8 @@ POST http://localhost:3003/api/blogs
 content-type: application/json
 
 {
-title: "thelegend",
-author: "Hira",
 
+"title": "thelegend",
+"author": "Hiraws",
+"url":"dbcjdbj"
 }

@@ -55,7 +55,7 @@ test("a specific blog is within the returned blog", async () => {
 test("verifying blog post by unique id by database _id", async () => {
   //for verifying _id in id key
   const response = await api.get("/api/blogs");
-  console.log("iam response", response.body[0].id);
+  // console.log("iam response", response.body[0].id);
   expect(response.body[0].id).toBeDefined();
 });
 test("throwing an error ,if title and url property missing", async () => {
@@ -65,6 +65,13 @@ test("throwing an error ,if title and url property missing", async () => {
   };
   await api.post("/api/blogs").send(newBlog).expect(400);
 });
+
+// test(" delete specific blog acc to id", async () => {
+//   const blog = await Blog.find({ title: "Atomic habbits" });
+//   console.log("hi this is blog", blog);
+
+//   await api.delete(`/api/blogs/${blog[0].id}`).expect(204);
+//   console.log("to see whats in blog", blog[0].id);
 
 afterAll(() => {
   mongoose.connection.close();
