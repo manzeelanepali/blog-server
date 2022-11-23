@@ -39,7 +39,7 @@ test("all blogs are returned", async () => {
   const response = await api.get("/api/blogs");
 
   expect(response.body).toHaveLength(initialBlogs.length);
-});
+}, 10000);
 
 // test("a specific note is within the returned notes", async () => {
 //   const response = await api.get("/api/blogs");
