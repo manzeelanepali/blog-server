@@ -26,37 +26,37 @@ const getTokenFrom = (request) => {
 
 blogRouter.post("/", async (request, response, next) => {
   const body = request.body;
+  try {
+    const token = getTokenFrom(request);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    if (!decodedToken.id) {
+      return response.status(401).json({ error: "token missing or invalid" });
+    }
+    const user = await User.findById(decodedToken.id);
 
-  const token = getTokenFrom(request);
-  const decodedToken = jwt.verify(token, process.env.SECRET);
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: "token missing or invalid" });
-  }
-  const user = await User.findById(decodedToken.id);
+    // console.log("i am body", body);
+    if (!body.likes) {
+      body.likes = 0;
+    }
+    if (!body.title || !body.url) {
+      response.status(400).json({ error: "missing property" });
+    }
+    {
+      const blog = new Blog({
+        title: body.title,
+        author: body.author,
+        likes: body.likes,
+        url: body.url,
+        user: body.userId,
+      });
 
-  // console.log("i am body", body);
-  if (!body.likes) {
-    body.likes = 0;
-  }
-  if (!body.title || !body.url) {
-    response.status(400).json({ error: "missing property" });
-  }
-  {
-    const blog = new Blog({
-      title: body.title,
-      author: body.author,
-      likes: body.likes,
-      url: body.url,
-      user: body.userId,
-    });
-    try {
       const newsave = await blog.save();
       user.blogs = user.blogs.concat(newsave._id);
       await user.save();
       response.status(201).json(newsave);
-    } catch (error) {
-      next(error);
     }
+  } catch (error) {
+    next(error);
   }
 });
 
