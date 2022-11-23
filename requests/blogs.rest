@@ -1,15 +1,20 @@
 GET http://localhost:3003/api/blogs
  
+
+
 ### 
 POST http://localhost:3003/api/blogs
 content-type: application/json
 
 {
-
+    
 "title": "thelegend",
 "author": "Hiraws",
-"url":"dbcjdbj"
+"url":"dbcjdbj",
+"likes":2,
+"userId":"637dcd477c1247471cba86a1"
 }
+
 
 ###
 
@@ -18,7 +23,7 @@ content-type: application/json
 
 {
 
-"username": "td",
-"name": "Hiraws",
-"password":"dbj"
+"username": "tdjhghghnbnghg",
+"name": "Hirawsnmnmnn",
+"password":"dbjghghgh"
 }
