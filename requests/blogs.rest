@@ -5,15 +5,14 @@ GET http://localhost:3003/api/blogs
 ### 
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlJhbWl0YSIsImlkIjoiNjM3ZGUxOGM2ZGNjMjQyOWJmNmJjZmFjIiwiaWF0IjoxNjY5MTk0MTQyfQ.G32xlDlbJxg3W_u7PaUc1o9Bp1TsqKQFdteI51i6LeI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlJhbWl0YSIsImlkIjoiNjM3ZGUxOGM2ZGNjMjQyOWJmNmJjZmFjIiwiaWF0IjoxNjY5MjIwMDYzfQ.XH90cQNXQdAFAy7luVubc-Nh80YpnBSFVKy8DmnTK-M
 
 {
 
-"title": "thelegend new created with token",
+"title": "thelegend new oneanxdan created with token",
 "author": "Hiraws",
 "url":"dbcjdbj",
-"likes":2,
-"userId":"637dcd477c1247471cba86a1"
+"likes":2
 }
 
 
@@ -39,3 +38,9 @@ content-type: application/json
 "username":"Ramita",
 "password":"Ramita"
 }
+
+
+###
+DELETE http://localhost:3003/api/users/637de18c6dcc2429bf6bcfac
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlJhbWl0YSIsImlkIjoiNjM3ZGUxOGM2ZGNjMjQyOWJmNmJjZmFjIiwiaWF0IjoxNjY5MTk0MTQyfQ.G32xlDlbJxg3W_u7PaUc1o9Bp1TsqKQFdteI51i6LeI

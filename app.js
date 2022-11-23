@@ -2,6 +2,7 @@ const config = require("./utils/config");
 const express = require("express");
 const cors = require("cors");
 const Blog = require("./models/blogs");
+const middleware = require("./utils/middleware");
 const { response } = require("express");
 const blogRouter = require("./controllers/blog");
 const usersRouter = require("./controllers/users");
@@ -9,10 +10,13 @@ const loginRouter = require("./controllers/login");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(middleware.requestLogger);
+app.use(middleware.tokenExtractor);
 app.use("/api/blogs", blogRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
-app.use(middleware.tokenExtractor);
+app.use(middleware.unknownEndpoint);
+app.use(middleware.errorHandler);
 
 // const middleware = require('./utils/middleware')
 // const logger = require('./utils/logger')
