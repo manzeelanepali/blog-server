@@ -10,3 +10,15 @@ content-type: application/json
 "author": "Hiraws",
 "url":"dbcjdbj"
 }
+
+###
+
+POST http://localhost:3003/api/users
+content-type: application/json
+
+{
+
+"username": "thelegend",
+"name": "Hiraws",
+"password":"dbcjdbj"
+}
