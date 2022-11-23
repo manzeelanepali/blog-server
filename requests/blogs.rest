@@ -7,7 +7,7 @@ POST http://localhost:3003/api/blogs
 content-type: application/json
 
 {
-    
+
 "title": "thelegend",
 "author": "Hiraws",
 "url":"dbcjdbj",
@@ -23,7 +23,18 @@ content-type: application/json
 
 {
 
-"username": "tdjhghghnbnghg",
+"username": "Ramita",
 "name": "Hirawsnmnmnn",
-"password":"dbjghghgh"
+"password":"Ramita"
+}
+
+
+###
+POST http://localhost:3003/api/login/
+content-type: application/json
+
+{
+
+"username":"Ramita",
+"password":"Ramita"
 }
