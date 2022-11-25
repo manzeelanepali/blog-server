@@ -58,7 +58,7 @@ blogRouter.post("/", async (request, response, next) => {
           author: body.author,
           likes: body.likes,
           url: body.url,
-          user: body.userId,
+          user: user,
         });
 
         const newsave = await blog.save();
@@ -91,9 +91,12 @@ blogRouter.post("/", async (request, response, next) => {
 blogRouter.delete("/:id", async (request, response, next) => {
   try {
     const user = request.user;
-    console.log("i M manjila user, user");
+    console.log("i am the user", user);
+
     const blogId = request.params.id;
+
     const blog = await Blog.findById(blogId);
+    console.log("i am user", blog);
     if (!blog) {
       response.status(404).json({ error: "This id doesn't exist" });
     }

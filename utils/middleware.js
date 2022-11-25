@@ -1,11 +1,25 @@
 const logger = require("./logger");
 const jwt = require("jsonwebtoken");
+const config = require("../utils/config");
 
-const requestLogger = (request, response, next) => {
-  logger.info("Method:", request.method);
-  logger.info("Path:  ", request.path);
-  logger.info("Body:  ", request.body);
-  logger.info("---");
+const tokenExtractor = (request, response, next) => {
+  const authorization = request.get("authorization");
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+    request.token = authorization.substring(7);
+  }
+  next();
+};
+
+const userExtractor = (request, response, next) => {
+  const authorization = request.get("authorization");
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+    console.log(request.token);
+    const decodedToken = jwt.verify(request.token, config.SECRET);
+    if (!decodedToken.id) {
+      response.status(401).json({ error: "token missing or invalid" });
+    }
+    request.user = decodedToken;
+  }
   next();
 };
 
@@ -28,18 +42,22 @@ const errorHandler = (error, request, response, next) => {
 
   next(error);
 };
-
-const tokenExtractor = (request, response, next) => {
-  const authorization = request.get("authorization");
-  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    request.token = authorization.substring(7);
-  }
-  next();
-};
+// const userExtractor = (request, response, next) => {
+//   const authorization = request.get("authorization");
+//   if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+//     const decodedToken = jwt.verify(request.token, config.SECRET);
+//     if (!decodedToken.id) {
+//       response.status(401).json({ error: "token missing or invalid" });
+//     }
+//     request.user = decodedToken;
+//   }
+//   next();
+// };
 
 module.exports = {
-  requestLogger,
+  tokenExtractor,
+  userExtractor,
   unknownEndpoint,
   errorHandler,
-  tokenExtractor,
+  //   userExtractor,
 };
