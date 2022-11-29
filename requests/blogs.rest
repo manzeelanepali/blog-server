@@ -23,9 +23,9 @@ content-type: application/json
 
 {
 
-"username": "sudjjjesh",
-"name": "Hirawsnmnmnn",
-"password":"sudesh"
+"username": "Manjita",
+"name": "Rajan",
+"password":"Manjita"
 }
 
 

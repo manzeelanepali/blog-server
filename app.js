@@ -1,13 +1,15 @@
-const config = require("./utils/config");
+// const config = require("./utils/config");
 const express = require("express");
 const cors = require("cors");
-const Blog = require("./models/blogs");
+// const Blog = require("./models/blogs");
+// const User = require("./models/user");
 const middleware = require("./utils/middleware");
-const { response } = require("express");
+// const { response } = require("express");
 const blogRouter = require("./controllers/blog");
 const usersRouter = require("./controllers/users");
 const loginRouter = require("./controllers/login");
 const app = express();
+app.use(express.static("build"));
 app.use(cors());
 app.use(express.json());
 //app.use(middleware.requestLogger);
