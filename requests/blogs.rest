@@ -5,15 +5,15 @@ GET http://localhost:3003/api/blogs
 ### 
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1ZGVzaCIsImlkIjoiNjM4MDRiZjZjOTJlMDRjZjk0NzljYTQzIiwiaWF0IjoxNjY5MzUyNDY4fQ.NmmzUyEMpgXTZZbPvwx-PubYf_kcCAj2FMt4OyXy2Ts
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbnUiLCJpZCI6IjYzOTAyNzVhNjQ1MTNkMmM5MmJhNDkzZCIsImlhdCI6MTY3MDM5MTc1OH0.B7UQQA-Mydy2EJH-Y6mGWr4X2FJ0J6ADvDy1RSynz7o
 
 {
-
-"title": "thelegend new oneanxdan created with n",
-"author": "sudesh",
-"url":"dbcjdbj",
-"likes":2
+"title": " just a trial by user anu",
+"author": "anu",
+"url":"jpt",
+"likes":5
 }
+
 
 
 ###
@@ -23,9 +23,9 @@ content-type: application/json
 
 {
 
-"username": "Manjita",
-"name": "Rajan",
-"password":"Manjita"
+"username": "anu",
+"name": "kanu",
+"password":"anu"
 }
 
 
@@ -35,12 +35,16 @@ content-type: application/json
 
 {
 
-"username":"sudesh",
-"password":"sudesh"
+"username":"sanu",
+"password":"sanu"
 }
 
 
 ###
-DELETE http://localhost:3003/api/blogs/6380514abb5a1fe825aea52a
+
+DELETE http://localhost:3003/api/blogs/6390734cd11763e0e637984f
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1ZGVzaCIsImlkIjoiNjM4MDRiZjZjOTJlMDRjZjk0NzljYTQzIiwiaWF0IjoxNjY5MzUyNDY4fQ.NmmzUyEMpgXTZZbPvwx-PubYf_kcCAj2FMt4OyXy2Ts
+Authorization:  bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbnUiLCJpZCI6IjYzOTAyNzVhNjQ1MTNkMmM5MmJhNDkzZCIsImlhdCI6MTY3MDM5MTc1OH0.B7UQQA-Mydy2EJH-Y6mGWr4X2FJ0J6ADvDy1RSynz7o
+
+
+
