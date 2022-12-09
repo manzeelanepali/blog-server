@@ -8,6 +8,7 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
 blogRouter.get("/", async (request, response) => {
+  console.log("the blog get enteree");
   const blogs = await Blog.find({}).populate("user", {
     name: 1,
     username: 1,
@@ -29,6 +30,7 @@ const getTokenFrom = (request) => {
 blogRouter.post("/", async (request, response, next) => {
   try {
     const body = request.body;
+    console.log("the blog router entered", body);
     // const token = getTokenFrom(request);
     // const token = request.token;
     // const decodedToken = jwt.verify(token, process.env.SECRET);
@@ -44,13 +46,16 @@ blogRouter.post("/", async (request, response, next) => {
     if (!body.title || !body.url) {
       response.status(400).json({ error: "missing property" });
     } else {
+      console.log("the else in post entered");
       const token = request.token;
+      console.log("the token is", token);
       const decodedToken = jwt.verify(token, process.env.SECRET);
       if (!decodedToken.id) {
         return response.status(401).json({ error: "token missing or invalid" });
       }
 
       const user = await User.findById(decodedToken.id);
+      console.log("the user in blogrouter is", user);
 
       {
         const blog = new Blog({
@@ -64,6 +69,7 @@ blogRouter.post("/", async (request, response, next) => {
         const newsave = await blog.save();
         user.blogs = user.blogs.concat(newsave._id);
         await user.save();
+        console.log("the new save is", newsave);
         response.status(201).json(newsave);
       }
     }
@@ -100,8 +106,13 @@ blogRouter.delete("/:id", async (request, response, next) => {
     if (!blog) {
       response.status(404).json({ error: "This id doesn't exist" });
     }
+    console.log("bloguser");
+    console.log("bloguser2", blog.user.toString());
+    console.log("for test", user.id.toString());
     if (blog.user.toString() === user.id.toString()) {
+      console.log("afterif");
       await Blog.findByIdAndRemove(blogId);
+      console.log("after await");
       response.status(204).json({ message: "deleted successfully" }).end();
     }
   } catch (error) {
