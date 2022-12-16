@@ -5,12 +5,12 @@ GET http://localhost:3003/api/blogs
 ### 
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGlsIiwiaWQiOiI2Mzk5YWI3ODZkYzE3OTZlMmVkMzg4MTEiLCJpYXQiOjE2NzEwMTUzMDl9.JZr-jmKOkauU0uzdj1rAB13NBuEw5iBFvz4aNxpveGI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtpcmFuIiwiaWQiOiI2MzljMjlkNGI2Y2VkNWQ4NjU0OTQ5ZTUiLCJpYXQiOjE2NzExNzg3MjZ9.7wQPGauX5AMuxo1Om3V-YOuqQHJ7OKqgnoQZoRNHKi0
 
 {
-"title": " sahil created this blog",
-"author": "sahil",
-"url":"sahil",
+"title": " kiran created this blog",
+"author": "kiran",
+"url":"kiran",
 "likes":5
 }
 
@@ -23,9 +23,9 @@ content-type: application/json
 
 {
 
-"username": "pire",
-"name": "pire",
-"password":"pire"
+"username": "kiran",
+"name": "kiran",
+"password":"kiran"
 }
 
 
@@ -35,8 +35,8 @@ content-type: application/json
 
 {
 
-"username":"pire",
-"password":"pire"
+"username":"kiran",
+"password":"kiran"
 }
 
 
