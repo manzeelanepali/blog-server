@@ -5,12 +5,12 @@ GET http://localhost:3003/api/blogs
 ### 
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbnUiLCJpZCI6IjYzOTAyNzVhNjQ1MTNkMmM5MmJhNDkzZCIsImlhdCI6MTY3MDM5MTc1OH0.B7UQQA-Mydy2EJH-Y6mGWr4X2FJ0J6ADvDy1RSynz7o
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhaGlsIiwiaWQiOiI2Mzk5YWI3ODZkYzE3OTZlMmVkMzg4MTEiLCJpYXQiOjE2NzEwMTUzMDl9.JZr-jmKOkauU0uzdj1rAB13NBuEw5iBFvz4aNxpveGI
 
 {
-"title": " just a trial by user anu",
-"author": "anu",
-"url":"jpt",
+"title": " sahil created this blog",
+"author": "sahil",
+"url":"sahil",
 "likes":5
 }
 
@@ -23,9 +23,9 @@ content-type: application/json
 
 {
 
-"username": "anu",
-"name": "kanu",
-"password":"anu"
+"username": "pire",
+"name": "pire",
+"password":"pire"
 }
 
 
@@ -35,8 +35,8 @@ content-type: application/json
 
 {
 
-"username":"sanu",
-"password":"sanu"
+"username":"pire",
+"password":"pire"
 }
 
 
